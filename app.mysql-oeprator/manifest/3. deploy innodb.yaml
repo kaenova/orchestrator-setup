@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: clusterpwds
+type: Opaque
+data:
+  rootUser: YourUsernameEncodedInBase64 # root
+  rootHost: JQ== # %
+  rootPassword: YourPasswordEncodedInBase64 # example
+---
+apiVersion: mysql.oracle.com/v2
+kind: InnoDBCluster
+metadata:
+  name: inno-db-cluster
+spec:
+  secretName: clusterpwds
+  tlsUseSelfSigned: true
+  instances: 3
+  router:
+    instances: 1
