@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: kaenova/ci-cd-learning
+        image: kaenova/ci-cd-playground:latest
         ports:
         - containerPort: 2000
