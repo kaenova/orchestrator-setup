@@ -1,0 +1,23 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: hello-world
+#   annotations:
+#     argocd-image-updater.argoproj.io/image-list: main=kaenova/ci-cd-playground
+#     argocd-image-updater.argoproj.io/main.force-update: "true"
+#     argocd-image-updater.argoproj.io/main.update-strategy: latest
+#     argocd-image-updater.argoproj.io/write-back-method: argocd
+# spec:
+#   destination:
+#     name: ''
+#     namespace: ''
+#     server: 'https://kubernetes.default.svc'
+#   source:
+#     path: .
+#     repoURL: 'https://github.com/kaenova/argocd-test.git'
+#     targetRevision: HEAD
+#   project: default
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true

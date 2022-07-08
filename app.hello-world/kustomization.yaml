@@ -1,0 +1,5 @@
+resources:
+  - "manifest/namespace.yaml"
+  - "manifest/deployment.yaml"
+  - "manifest/service.yaml"
+  - "manifest/ingress.yaml"
