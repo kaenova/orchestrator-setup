@@ -19,4 +19,4 @@ spec:
       - name: hello-world
         image: kaenova/ci-cd-playground:latest
         ports:
-        - containerPort: 2000
+        - containerPort: 3000
