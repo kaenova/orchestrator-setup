@@ -1,0 +1,28 @@
+# NOT TO BE APPLIED, JUST AN EXAMPLE ON HOW TO CREATE AN INGRESS
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress
+  namespace: hello-world
+  annotations:
+    ingress.kubernetes.io/proxy-body-size: 100M
+    kubernetes.io/ingress.class: "nginx" # or any other ingresses
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    ingress.kubernetes.io/app-root: "/"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging" # or "letsencrypt-production"
+spec:
+  tls:
+    - hosts:
+        - "hello.localhost"
+      secretName: kubernetes-dashboard-tls
+  rules:
+    - host: hello.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hello-world
+                port:
+                  number: 443
